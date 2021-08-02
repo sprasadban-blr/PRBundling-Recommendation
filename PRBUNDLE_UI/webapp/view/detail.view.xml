@@ -1,0 +1,124 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="PRBUNDLE.PRBUNDLE.controller.detail"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:layout="sap.ui.layout" xmlns:grid="sap.ui.layout.cssgrid" xmlns:dnd="sap.ui.core.dnd"
+	xmlns:dnd-grid="sap.f.dnd" xmlns:f="sap.f">
+	<Page id="p2" title="cluster {cluster>/clusterName}" titleAlignment="Center">
+		<content>
+			<VBox>
+				<HBox justifyContent="Center">
+					<VBox>
+						<f:Card width="500px" height="300px" id="CardId" class="sapUiMediumMarginTopBottom sapUiMediumMarginBeginEnd">
+							<f:content>
+								<viz:VizFrame id="idVizFrame1" vizType='column' width="100%" height="100%"
+									vizProperties="{plotArea: { drawingEffect: 'glossy'},title:{ text:'EKORG Distribution'},dataLabel:{visible:true}}">
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{data>/}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="EKORG" value="{data>unique_values}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="count" value="{data>counts}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="count"/>
+										<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="EKORG"/>
+									</viz:feeds>
+								</viz:VizFrame>
+							</f:content>
+						</f:Card>
+					</VBox>
+					<VBox>
+						<f:Card width="500px" height="300px" id="CardId1" class="sapUiMediumMarginTopBottom sapUiMediumMarginBeginEnd ">
+							<f:content>
+								<viz:VizFrame id="idVizFrame2" selectData="myChartClickHandler" vizType='donut' width="100%" height="100%"
+									vizProperties="{plotArea: { drawingEffect: 'glossy'},title:{ text:'Bundling Result'},dataLabel:{visible:true}}">
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{data>/}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="Cluster" value="{data>unique_values}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="Count" value="{data>counts}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+										<viz.feeds:FeedItem uid="color" type="Dimension" values="Cluster" height="700px"/>
+									</viz:feeds>
+								</viz:VizFrame>
+							</f:content>
+						</f:Card>
+					</VBox>
+				</HBox>
+				<HBox id="limeBox" justifyContent="Center" >
+					<!--<f:Card  height="300px" id="CardId2" class="sapUiMediumMarginTopBottom sapUiMediumMarginBeginEnd ">-->
+					<!--	<f:content>-->
+							<core:HTML id="html"></core:HTML>
+					<!--	</f:content>-->
+					<!--</f:Card>-->
+				</HBox>
+			</VBox>
+			<HBox class="sapUiMediumMarginTopBottom ">
+				<!--<Image src="http://127.0.0.1:5000/loadInterpretaibility" height="500px" width="00px" />-->
+				<Table id="clusterDetail" width="auto" class="sapUiResponsiveMargin" items="{/}" backgroundDesign="Translucent" alternateRowColors="true">
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title text="PRs" level="H2"/>
+							<ToolbarSpacer/>
+							<HBox>
+								<SearchField xmlns="sap.m" placeholder="Search for PR..." search="onFilterLane"/>
+							</HBox>
+							<ToolbarSpacer/>
+							<HBox>
+								<Button tooltip="View Sort Settings" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+								<Button tooltip="View Filter Settings" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
+								<Button tooltip="View Group Settings" icon="sap-icon://group-2" press="handleGroupButtonPressed"/>
+								<ToggleButton icon="sap-icon://menu" tooltip="Enable / Disable Custom Context Menu" press="onToggleContextMenu"/>
+							</HBox>
+						</OverflowToolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<OverflowToolbar id="vsdFilterBar" visible="false">
+							<Text id="vsdFilterLabel"/>
+						</OverflowToolbar>
+					</infoToolbar>
+					<columns>
+						<Column>
+							<Text text="MANDT"/>
+						</Column>
+						<Column>
+							<Text text="BANFN"/>
+						</Column>
+						<Column>
+							<Text text="BNFPO"/>
+						</Column>
+						<Column>
+							<Text text="FLIEF"/>
+						</Column>
+						<Column>
+							<Text text="EKORG"/>
+						</Column>
+						<Column>
+							<Text text="Cluster"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem type="Active" press="handleLineItemPress">
+							<cells>
+								<Text text="{MANDT}"/>
+								<Text text="{BANFN}"/>
+								<Text text="{BNFPO}"/>
+								<Text text="{FLIEF}"/>
+								<Text text="{EKORG}"/>
+								<Text text="{cluster}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>

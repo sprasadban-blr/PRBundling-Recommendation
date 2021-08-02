@@ -1,0 +1,136 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "PRBUNDLE.PRBUNDLE",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "PRBUNDLE.PRBUNDLE.view.root",
+			"type": "XML",
+			"async": true,
+			"id": "root"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "PRBUNDLE.PRBUNDLE.i18n.i18n"
+				}
+			},
+			"side": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/sideContent.json"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "PRBUNDLE.PRBUNDLE.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "Routeroot",
+					"pattern": "Routeroot",
+					"target": [
+						"Targetroot"
+					]
+				},
+				{
+					"name": "data",
+					"pattern": "data",
+					"target": [
+						"data"
+					]
+				},
+				{
+					"name": "detail",
+					"pattern": "detail/{clusterName}",
+					"target": [
+						"detail"
+					]
+				}
+			],
+			"targets": {
+				"Targetroot": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "root",
+					"viewName": "root"
+				},
+				"data": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "data",
+					"viewName": "data"
+				},
+				"detail": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "detail",
+					"viewName": "detail"
+				},
+				"test": {
+					"viewType": "XML",
+					"viewName": "test"
+				}
+			}
+		}
+	}
+}

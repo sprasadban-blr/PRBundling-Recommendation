@@ -1,0 +1,9 @@
+Step 1: run app.py
+C:\Users\I050385\github\PRBundling_New\flask>python app.py
+
+WebIDE:
+From browser: 
+a) https://webidecp-fiori.dispatcher.int.sap.eu2.hana.ondemand.com/
+b) "any folder" --> Import --> File Or Project --> (Import PRBUNDLE.zip from HDD)
+
+Select date range (01/04/2018 to 31/12/2018) 

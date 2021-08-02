@@ -1,0 +1,31 @@
+<mvc:View controllerName="PRBUNDLE.PRBUNDLE.controller.root" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt"
+	class="side-navigation-demo">
+	<tnt:ToolPage id="idapp">
+		<tnt:header>
+			<tnt:ToolHeader>
+
+				<Image src="test-resources/sap/tnt/images/SAP_Logo.png"/>
+				<Text text="PR Bundling" wrapping="false"/>
+				<ToolbarSpacer/>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation expanded="true" itemSelect=".onItemSelect">
+				<tnt:NavigationList items="{ path: 'side>/navigation', templateShareable: false }">
+					<tnt:NavigationListItem text="{side>title}" icon="{side>icon}" expanded="{side>expanded}"
+						items="{ path: 'side>items', templateShareable: false }" key="{side>key}">
+						<tnt:NavigationListItem text="{side>title}" key="{side>key}"></tnt:NavigationListItem>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList items="{ path: 'side>/fixedNavigation', templateShareable: false }">
+						<tnt:NavigationListItem text="{side>title}" icon="{side>icon}" key="{side>key}"></tnt:NavigationListItem>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<App id="app"/>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

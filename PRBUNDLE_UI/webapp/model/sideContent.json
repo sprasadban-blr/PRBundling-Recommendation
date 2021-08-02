@@ -1,0 +1,15 @@
+{
+	"navigation": [{
+		"title": "Data View",
+		"icon": "sap-icon://database",
+		"expanded": true,
+		"key": "data",
+		"items": []
+	}, {
+		"title": "Model Interpretability",
+		"icon": "sap-icon://donut-chart",
+		"expanded": false,
+		"key": "analytics",
+		"items": []
+	}]
+}
